@@ -1,0 +1,36 @@
+<!-- reference: https://codehandbook.org/creating-a-web-app-using-angular-4/ -->
+<br>
+<div class="listContainer">
+    <ul class="list-group" *ngFor="let task of taskList">
+        <li class="list-group-item" (click)="onSelect(task)">
+            <table style="width: 100%">
+                <td style="width:10%">
+                    <input type="checkbox" [checked]="task.isDone" (click)="updateTask(task)">
+                </td>
+                <td style="width:50%">
+                    {{task.name}}
+                </td>
+                <td>
+                    <ngb-rating [(rate)]="task.priority" [readonly]="true" max="3"></ngb-rating>
+                </td>
+                <td style="width:20%">
+                    Due on: {{task.deadline.year}}-{{task.deadline.month}}-{{task.deadline.day}}
+                </td>
+                <td style="text-align: right">
+                    <a data-toggle="modal" data-target="#editModal" class="nav-link active" href="#">Edit</a>
+                </td>
+                <td style="text-align: right">
+                    <button type="button" (click)="deleteTask(task._id)" data-dismiss="modal" class="btn btn-danger">Delete</button>
+                </td>
+            </table>
+        </li>
+    </ul>
+</div>
+<br>
+
+<div style="text-align: right">
+    <button type="button" (click)="removeCompleted(taskList)" data-dismiss="modal" class="btn btn-danger">Delete Completed</button>
+</div>
+
+<app-edit-task [task]="selectedTask"></app-edit-task>
+    
