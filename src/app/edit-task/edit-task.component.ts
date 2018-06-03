@@ -5,8 +5,7 @@ import { TaskListComponent } from '../task-list/task-list.component';
 
 @Component({
   selector: 'app-edit-task',
-  templateUrl: './edit-task.component.html',
-  styleUrls: ['./edit-task.component.css']
+  templateUrl: './edit-task.component.html'
 })
 export class EditTaskComponent implements OnInit {
   @Input() task: Task;
